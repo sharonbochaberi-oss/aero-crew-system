@@ -28,12 +28,20 @@ function LoginPage() {
 
             localStorage.setItem(
                 "token",
-                response.data.token
+                 response.data.token
             )
 
-            login(
-                response.data.user
+            localStorage.setItem(
+                "user",
+                 JSON.stringify(response.data.user)
             )
+
+            localStorage.setItem(
+                "user_role",
+                 response.data.user.role
+            )
+
+            login(response.data.user)
 
             navigate("/dashboard")
 

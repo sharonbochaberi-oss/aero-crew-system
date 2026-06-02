@@ -1,10 +1,12 @@
 from flask import Blueprint, request
+from flask_jwt_extended import jwt_required
 from models.aircraft import Aircraft
 from extensions import db
 
 aircraft_bp = Blueprint("aircraft", __name__)
 
 @aircraft_bp.route("/", methods=["GET"])
+@jwt_required()
 def get_aircraft():
     aircraft_list = Aircraft.query.all()
     result = []
@@ -21,6 +23,7 @@ def get_aircraft():
     return result, 200
 
 @aircraft_bp.route("/", methods=["POST"])
+@jwt_required()
 def create_aircraft():
     data = request.json
     
@@ -40,6 +43,7 @@ def create_aircraft():
     return {"message": "Aircraft created"}, 201
 
 @aircraft_bp.route("/<int:id>/", methods=["PUT"])
+@jwt_required()
 def update_aircraft(id):
     aircraft = Aircraft.query.get_or_404(id)
     data = request.json
@@ -54,6 +58,7 @@ def update_aircraft(id):
     return {"message": "Aircraft updated"}, 200
 
 @aircraft_bp.route("/<int:id>/", methods=["DELETE"])
+@jwt_required()
 def delete_aircraft(id):
     aircraft = Aircraft.query.get_or_404(id)
     

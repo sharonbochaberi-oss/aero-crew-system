@@ -7,6 +7,7 @@ from datetime import datetime
 flight_bp = Blueprint("flights", __name__)
 
 @flight_bp.route("/", methods=["GET"])
+@jwt_required()
 def get_flights():
     flights = Flight.query.all()
     result = []

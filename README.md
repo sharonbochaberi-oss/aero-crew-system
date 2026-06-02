@@ -5,9 +5,9 @@ Aero Crew Management System (ACMS) is a full-stack web application for managing 
 ## Features
 User Authentication (JWT)
 Role-Based Access Control
-Admin
-Pilot
-Flight Attendant/Crew
+   Admin
+   Pilot
+   Flight Attendant/Crew
 Aircraft Management
 Flight Scheduling
 Crew Assignment Management
@@ -32,9 +32,9 @@ Vite
 Backend
 cd backend
 
-python -m venv venv
+python -m venv .venv
 
-source venv/bin/activate
+source .venv/bin/activate
 
 pip install -r requirements.txt
 

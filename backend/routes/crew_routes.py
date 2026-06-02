@@ -18,8 +18,8 @@ def get_assignments():
         for user in flight.crew_members:
             crew_list.append({
                 "id": user.id,
-                "username": user.username,
-                "role": getattr(user, 'role', 'Crew')  # Pulls role field if it exists
+                "full_name": user.full_name,
+                "role": getattr(user, 'role', 'Crew')
             })
             
         result.append({

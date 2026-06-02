@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function DashboardLayout({ children }) {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const role = user?.role || "crew";
 
   const sidebarStyle = {
@@ -89,9 +90,11 @@ function DashboardLayout({ children }) {
             <li>
               <button
                 onClick={() => {
-                  localStorage.clear();
-                  window.location.href = "/login";
+                  logout()
+                  navigate("/login")
                 }}
+                className="btn btn-outline-light"
+                style={{ width: "100%", textAlign: "left" }}
               >
                 🚪 Logout
               </button>

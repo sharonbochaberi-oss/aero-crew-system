@@ -26,7 +26,7 @@ def get_reports():
             "user_id": r.user_id,
             "flight_id": r.flight_id,
             # Fallback string mappings if relationships aren't eagerly loaded
-            "submitted_by": getattr(r.user, 'username', f"User {r.user_id}"),
+            "submitted_by": getattr(r.user, 'full_name', f"User {r.user_id}"),
             "flight_number": getattr(r.flight, 'flight_number', f"ID {r.flight_id}")
         })
     return result, 200

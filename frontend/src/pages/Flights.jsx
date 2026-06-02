@@ -155,7 +155,7 @@ function Flights() {
                     <option value="">Select Aircraft</option>
                     {aircraftFleet.map((ac) => (
                         <option key={ac.id} value={ac.id}>
-                            {ac.aircraft_code} ({ac.model})
+                            {ac.registration_number} ({ac.model})
                         </option>
                     ))}
                 </select>

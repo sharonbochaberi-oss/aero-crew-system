@@ -16,7 +16,7 @@ function Crew() {
             // Note: Update '/users/' route if your user listing endpoint differs
             const [assignmentsRes, usersRes] = await Promise.all([
                 api.get("/crew/assignments/"),
-                api.get("/users/") 
+                api.get("/auth/users/")
             ])
             setAssignments(assignmentsRes.data)
             setUsers(usersRes.data)
@@ -73,7 +73,7 @@ function Crew() {
                     <option value="">Select Crew Member</option>
                     {users.map((user) => (
                         <option key={user.id} value={user.id}>
-                            {user.username} ({user.role || "Crew"})
+                            {user.full_name} ({user.role || "Crew"})
                         </option>
                     ))}
                 </select>
@@ -109,7 +109,7 @@ function Crew() {
                             <ul>
                                 {flight.crew.map((member) => (
                                     <li key={member.id} style={{ marginBottom: "5px" }}>
-                                        <strong>{member.username}</strong> — {member.role}
+                                        <strong>{member.full_name}</strong> — {member.role}
                                         <button 
                                             onClick={() => removeCrew(flight.flight_id, member.id)}
                                             style={{ marginLeft: "15px", color: "red", padding: "2px 6px" }}
